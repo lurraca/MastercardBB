@@ -1,0 +1,10 @@
+#container {
+}
+
+#bgimage {
+	position: absolute;
+}
+
+#bgimage img {
+	width: 100%;
+}
