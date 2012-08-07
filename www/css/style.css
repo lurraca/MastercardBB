@@ -10,10 +10,12 @@
 }
 
 #bgimage {
+	overflow: hidden;
 	position: absolute;
 	top: 0;
 }
 
 #bgimage img {
 	width: 100%;
+	
 }

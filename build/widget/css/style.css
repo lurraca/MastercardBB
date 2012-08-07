@@ -1,8 +1,17 @@
-#container {
+#header , #footer {
+	opacity: 0.7;
+}
+
+#mastercardlogo {
+	position: absolute;
+	top: 0;
+	z-index: 1000;
+	left: 47%;
 }
 
 #bgimage {
 	position: absolute;
+	top: 0;
 }
 
 #bgimage img {

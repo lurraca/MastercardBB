@@ -1,13 +1,13 @@
-RIM-COD-SHA1-9: 71 84 1f 30 24 dc 38 05 6a d7 f8 84 b6 c5 fe d9 6b ae 49 42
-RIM-COD-SHA1-8: c5 0d 46 d2 b8 af 1e aa 08 7f 8f 1c 1e 28 98 54 fd 1e 53 16
-RIM-COD-SHA1-7: a3 86 d0 87 8c 2b b5 4a 2d b5 7a 32 bd f5 58 88 8c d2 15 65
-RIM-COD-SHA1-6: c5 a8 be aa 1c 71 d6 cf cc d5 d6 df 75 bb 3d a2 1f 36 2c 02
-RIM-COD-SHA1-5: 72 45 07 d4 59 7e 6b 36 34 4a 13 91 0b c5 9a 6f f8 a3 98 c0
-RIM-COD-SHA1-4: 76 2d e5 09 00 2a a3 80 70 97 84 86 cb 8d f3 d5 91 17 2e 76
-RIM-COD-SHA1-3: 92 4f 28 5a 61 44 5c 9a a2 db 51 c7 89 8a 12 6b e0 76 6b d2
-RIM-COD-SHA1-2: 36 90 63 17 5d 7e 42 b3 77 ab 9d 73 8d 79 a7 5f 72 f0 da 99
-RIM-COD-SHA1-1: d7 ec e0 bc fb aa f4 0f 0f 35 01 7c 81 79 0c d6 43 52 97 51
-RIM-COD-Size-20: 65428
+RIM-COD-SHA1-9: 27 fa 4e 1d 05 47 cd 0c ca e3 96 7f c0 ce c6 5d 1b 7b e4 dd
+RIM-COD-SHA1-8: f3 4c 60 af 48 54 1b 67 78 5b 2f 17 93 29 aa 09 85 04 8e b4
+RIM-COD-SHA1-7: 9e 5d 83 38 83 45 05 55 b2 c2 53 89 5f 29 59 57 9e 98 82 90
+RIM-COD-SHA1-6: 71 25 23 01 f2 76 d9 34 51 b1 1e 44 c2 89 45 d6 30 9d a3 0e
+RIM-COD-SHA1-5: d7 5d 03 25 b8 0d a8 58 fb 8f 01 af e1 9b a0 e3 4a 48 42 22
+RIM-COD-SHA1-4: cc 61 a6 bd 7c ec 83 9c 4f 6f 97 0a 5d 24 f3 68 54 21 e2 2a
+RIM-COD-SHA1-3: a9 87 7a b1 af 20 d9 83 12 b1 fa 3a 0b 56 9c b5 33 2e b7 dd
+RIM-COD-SHA1-2: 7d 9f 74 8d df 65 82 e0 99 02 b3 a4 71 d4 e4 02 3c 6b 7e 79
+RIM-COD-SHA1-1: ba ee 36 df c2 49 90 a2 f6 3d 6d 8e 4b 3e ed 2f 57 c0 39 5b
+RIM-COD-Size-20: 65424
 RIM-COD-URL-19: cordovaExample-19.cod
 RIM-COD-URL-18: cordovaExample-18.cod
 RIM-COD-URL-17: cordovaExample-17.cod
@@ -16,7 +16,7 @@ RIM-COD-URL-15: cordovaExample-15.cod
 RIM-COD-URL-14: cordovaExample-14.cod
 RIM-COD-URL-13: cordovaExample-13.cod
 RIM-COD-URL-12: cordovaExample-12.cod
-RIM-COD-Size: 70804
+RIM-COD-Size: 70844
 RIM-MIDlet-Icon-2-1: ____HOVER_ICON_resources/icon.png,focused
 RIM-COD-URL-11: cordovaExample-11.cod
 RIM-MIDlet-Icon-Count-2: 1
@@ -27,47 +27,47 @@ RIM-MIDlet-Icon-1-1: resources\____HOVER_ICON_icon.png,focused
 Manifest-Version: 1.0
 RIM-MIDlet-Flags-1: 0
 RIM-COD-Size-19: 50256
-RIM-COD-Size-18: 53412
-RIM-COD-Size-17: 53884
-RIM-COD-Size-16: 58276
-RIM-COD-Size-15: 41644
-RIM-COD-Size-14: 25460
-RIM-COD-Size-13: 53928
+RIM-COD-Size-18: 53592
+RIM-COD-Size-17: 54388
+RIM-COD-Size-16: 58288
+RIM-COD-Size-15: 41648
+RIM-COD-Size-14: 54184
+RIM-COD-Size-13: 46156
 RIM-COD-Size-12: 50420
-RIM-COD-Size-11: 55908
-RIM-COD-Size-10: 64176
+RIM-COD-Size-11: 54848
+RIM-COD-Size-10: 54676
 MIDlet-Version: 1.0.0.0
 MicroEdition-Profile: MIDP-2.0
-RIM-COD-SHA1-20: e8 38 d8 b3 cd cb 29 3d dc c2 12 7d f6 19 be 5f df c0 f3 32
+RIM-COD-SHA1-20: 93 56 85 71 e2 fb 64 fd 5d 2b 12 1c fa 59 b1 60 5c 6b 91 ae
 RIM-COD-URL: cordovaExample.cod
-RIM-COD-Creation-Time: 1344224135
+RIM-COD-Creation-Time: 1344235887
 MicroEdition-Configuration: CLDC-1.1
 MIDlet-Jar-URL: cordovaExample.jar
-RIM-COD-SHA1-19: 1f 55 ea 53 f5 df 82 5b 69 b0 d0 c4 06 a6 69 14 8c 01 77 b0
-RIM-COD-SHA1-18: 38 d4 bd 30 84 4d 8b e7 28 69 0c 00 a4 e6 e2 dc 77 0b 70 e0
-RIM-COD-SHA1-17: bb 3f f8 45 3f ed ae 63 58 39 6f 27 97 5f 14 ef 77 3e 44 6c
-RIM-COD-SHA1-16: 31 aa e2 db 2c a6 c2 3d d4 94 e3 e2 07 e8 51 fc b3 c1 7d 2c
-RIM-COD-SHA1-15: 47 0f f3 52 a8 be 97 8e 52 d3 47 88 2f db b7 f1 1a 1b 39 47
-RIM-COD-SHA1-14: 45 63 f5 f8 64 24 df 1e 27 b3 61 72 60 43 36 2b 29 51 10 aa
-RIM-COD-SHA1-13: 1b 58 c0 9b df 59 97 f7 60 ce b6 25 8f 1e 8e 03 3d 1f 38 cb
-RIM-COD-SHA1-12: e8 e6 f4 58 c8 13 6a 3b 99 8a 03 80 6e f5 92 23 fb e9 59 74
-RIM-COD-Size-9: 64492
-RIM-COD-SHA1-11: 1d 2d fd ea a7 1c 6e 97 e7 5f b3 10 07 62 e1 d1 f1 6a 7b c2
-RIM-COD-Size-8: 70368
-RIM-COD-SHA1-10: f6 12 4e f1 81 84 77 0f 69 b3 a9 36 cd 09 dc ca 40 80 19 7f
-RIM-COD-Size-7: 64252
+RIM-COD-SHA1-19: 39 85 7a a5 19 6d 77 8f 24 cd 4b ce 47 68 dc 28 7c c0 41 43
+RIM-COD-SHA1-18: 2a 53 45 35 d1 42 2e b4 d1 f2 b3 df 3a bd 4c ef 9c b3 d3 03
+RIM-COD-SHA1-17: 0f b1 69 a9 34 cb 7d ce 95 ca 52 9a ce 5d e6 bc 83 27 53 aa
+RIM-COD-SHA1-16: c8 be 7d 2f 80 94 8f b5 65 ad 62 43 f7 6b da 34 8e 92 b7 d9
+RIM-COD-SHA1-15: 9d 98 ad 3e 26 db cc 25 66 72 1a 87 7f 18 3c e4 b2 6a 96 18
+RIM-COD-SHA1-14: d0 9b 54 f1 d6 29 ca 8d 5f 63 a1 c4 0d 47 13 fb eb f6 ac 00
+RIM-COD-SHA1-13: 01 fb 83 95 23 40 cd 7f 10 77 4f 6b c7 0c 0b ee fe 53 d1 75
+RIM-COD-SHA1-12: 56 29 fd 81 e5 46 a7 7f 4c 2a 5b 9e 89 c4 7e ea 6f 00 d8 5a
+RIM-COD-Size-9: 66176
+RIM-COD-SHA1-11: 60 71 2b 3f dc a4 3d df 4a 0a 19 89 0a 2b c7 0d 4a 30 93 83
+RIM-COD-Size-8: 65248
+RIM-COD-SHA1-10: f0 9e 22 94 f1 03 51 0f 1d ac b2 b4 b1 4a a0 da 2b 47 ab 9d
+RIM-COD-Size-7: 67060
 MIDlet-Description: A sample application written with Cordova.
-RIM-COD-Size-6: 68904
-RIM-COD-Size-5: 65072
-RIM-COD-Size-4: 64428
+RIM-COD-Size-6: 65504
+RIM-COD-Size-5: 67592
+RIM-COD-Size-4: 66392
 RIM-COD-Size-3: 64156
 RIM-COD-Size-2: 68592
 RIM-COD-Size-1: 68072
 MIDlet-1: cordovaExample,resources/icon.png,rim:foreground;WIDGET;
 MIDlet-Name: cordovaExample
-RIM-COD-SHA1: d3 cf 05 80 41 f8 92 5a 3c 03 32 08 1f 30 36 88 d3 1d 90 91
+RIM-COD-SHA1: a3 85 65 f1 75 81 90 c6 5e 9a ed 79 ce 94 69 8a 70 9a 5c 7f
 RIM-COD-Module-Dependencies: net_rim_cldc,net_rim_bb_web_jse_api,net_rim_xml_org,net_rim_bb_browser_field2_api,net_rim_os,net_rim_bbapi_push,net_rim_bbapi_messagelist,net_rim_pdap,net_rim_bbapi_phone,net_rim_bbapi_mailv2,net_rim_bbapi_invoke,net_rim_networkapi,net_rim_bb_browser_field_api,net_rim_xml,net_rim_bbapi_browser,net_rim_locationapi
-MIDlet-Jar-Size: 1509402
+MIDlet-Jar-Size: 1520932
 RIM-COD-URL-9: cordovaExample-9.cod
 RIM-COD-URL-8: cordovaExample-8.cod
 RIM-COD-URL-7: cordovaExample-7.cod
