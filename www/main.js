@@ -1,9 +1,10 @@
 jQuery(function($) {
 
 	var RESTAURANTS_CATEGORY_ID = 1;
+	var server_url = "http://107.20.213.141:3000/";
+
 	var populateData = function() {
 		window.MasterCardData = {};
-		var server_url = "http://107.20.213.141:3000/"
 
 		$.get(server_url + "benefits/active/all.json", function(benefitsStr) {
 			var bens = eval("(" + benefitsStr + ")");
@@ -59,10 +60,29 @@ jQuery(function($) {
 		});
 	});
 
+	var loadBusinessDetail = function(bizId) {
+		var biz = _.filter(MasterCardData.businesses, function(bz) {return bz.id == bizId})[0];
+		$("#platinum-business-dtl .bizDtlTitle").html(biz.name);
+		$("#platinum-business-dtl .bizDtlImg").attr("src", server_url + biz.logo_url);
+		$("#platinum-business-dtl .bizDtlTel").html(biz.phone);
+		$("#platinum-business-dtl .bizDtlAddr").html(biz.address);
+		$("#platinum-business-dtl .bizDtlDesc").html(biz.description);
+
+		var benefits = _.filter(MasterCardData.benefits, function(ben) {return ben.business_id == bizId});
+		$.each(benefits, function(i, bnft) {
+			$("#platinum-business-dtl .bizDtlBenefits").append("<li><a href='#'>"+bnft.name+"</a></li>");
+			$("#platinum-business-dtl .bizDtlBenefits").listview('refresh');
+		});
+	}
+
 	var loadBusinesses = function(jqList, bizs) {
 		jqList.empty();
 		$.each(bizs, function(i, el) {
 			jqList.append("<li class='business-lnk' business-id='"+el.id+"'><a href='#platinum-business-dtl'>" + el.name + "</a></li>");
+		});
+		jqList.listview('refresh');
+		$(".business-lnk").click(function() {
+			loadBusinessDetail($(this).attr("business-id"));
 		});
 	};
 	$(document).delegate("#platinum-restaurants", "pageshow",function() {
