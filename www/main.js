@@ -1,6 +1,7 @@
 jQuery(function($) {
 
 	var RESTAURANTS_CATEGORY_ID = 1;
+	var STORES_CATEGORY_ID = 2;
 	var server_url = "http://107.20.213.141:3000/";
 
 	var populateData = function() {
@@ -69,9 +70,16 @@ jQuery(function($) {
 		$("#platinum-business-dtl .bizDtlDesc").html(biz.description);
 
 		var benefits = _.filter(MasterCardData.benefits, function(ben) {return ben.business_id == bizId});
+		$("#platinum-business-dtl .bizDtlBenefits").empty();
 		$.each(benefits, function(i, bnft) {
-			$("#platinum-business-dtl .bizDtlBenefits").append("<li><a href='#'>"+bnft.name+"</a></li>");
+			$("#platinum-business-dtl .bizDtlBenefits").append("<li class='benefit-lnk' benefit-id='"+bnft.id+"'><a href='#platinum-benefits-dtl'>"+bnft.name+"</a></li>");
+		});
+
+		if($("#platinum-business-dtl .bizDtlBenefits").hasClass('ui-listview'))
 			$("#platinum-business-dtl .bizDtlBenefits").listview('refresh');
+
+		$(".benefit-lnk").click(function() {
+			loadBenefitDetail($(this).attr("benefit-id"));
 		});
 	}
 
@@ -87,5 +95,9 @@ jQuery(function($) {
 	};
 	$(document).delegate("#platinum-restaurants", "pageshow",function() {
 		loadBusinesses($("#platinum-restaurants-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == RESTAURANTS_CATEGORY_ID}));
+	});
+
+	$(document).delegate("#platinum-stores", "pageshow",function() {
+		loadBusinesses($("#platinum-stores-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == STORES_CATEGORY_ID}));
 	});
 });
