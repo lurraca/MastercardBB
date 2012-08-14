@@ -10,13 +10,13 @@
         <script type="text/javascript" src="main.js"></script>
         <link rel="stylesheet" type="text/css" href="jquery.mobile-1.1.1.min.css">
         <link rel="stylesheet" type="text/css" href="jquery.mobile.structure-1.1.1.min.css">
-        <link rel="stylesheet" type="text/css" href="jquery.mobile.theme-1.1.1.min.css">
+        <link rel="stylesheet" type="text/css" id="custom" href="jquery.mobile.theme-1.1.1.min.css">        
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <div id="main" data-role="page">
+        <div id="main" data-role="page" data-theme="a">
 
-            <div id="header" data-role="header" data-position   ="fixed">
+            <div id="header" data-role="header" data-theme="a" data-position="fixed">
                 <h1></h1>
             </div>
 
@@ -32,27 +32,23 @@
                 <p>Hello world</p>      
             </div>
 
-            <div id="footer" data-role="footer" data-position="fixed">
+            <div id="footer" data-role="footer" data-theme="a" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#">Mastercard Black</a></li>
-                        <li><a href="#platinum-main">Mastercard Platinum</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-black.css');">Mastercard Black</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-platinum.css');">Mastercard Platinum</a></li>
                     </ul>
                 </div>
             </div>
 
         </div>
-        <div id="platinum-main" data-role="page">
+        <div id="card-main" data-theme="" data-role="page">
 
-            <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-theme="a"></a>
+            <div data-role="header" data-theme="" data-position="fixed" data-theme="a">
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <h1></h1>
-                <a href="index.html" data-icon="search" data-theme="a"></a>
-            </div>
-
-            <div id="mastercardlogo">
-                <img src="images/mastercardlogo.png">
+                <center><img src="images/mastercardlogo.png"></center>
+                <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
             </div>
 
             <div id="bgimage">
@@ -63,7 +59,7 @@
                     
             </div>
 
-            <div data-role="footer" data-position="fixed">
+            <div data-role="footer" data-theme="a" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
                         <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
@@ -77,18 +73,17 @@
         <div id="platinum-benefits" data-role="page">
 
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <h1></h1>
-                <a href="index.html" data-icon="search" data-theme="a"></a>
+                <center><img src="images/mastercardlogo.png"></center>
+                <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
             </div>
 
             <div id="mastercardlogo">
-                <img src="images/mastercardlogo.png">
-            </div>
+                            </div>
 
             <div id="platinum-benefits-content">
-                <ul data-role="listview">
+                <ul data-role="listview" data-theme="b">
                     
                 </ul>
             </div>
@@ -109,22 +104,19 @@
         </div>
         <div id="platinum-benefits-dtl" data-role="page">
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <h1></h1>
-                <a href="index.html" data-icon="search" data-theme="a"></a>
+                <center><img src="images/mastercardlogo.png"></center>
+                <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
             </div>
 
-            <div id="mastercardlogo">
-                <img src="images/mastercardlogo.png">
-            </div>
-
-            <div>
+            <div id="benefitdtlwrapper">
                 <h2 class="benDtlTitle"></h2>
-                <p class="benDtlBusiness"></p>
-                <p class="benDtlDescription"></p>
-                <p class="benDtlFrom"></p>
-                <p class="benDtlTo"></p>
+                <h2 class="benDtlBusiness"></h2>
+                <span style="font-size:14px;">
+                <b>Descripcion: </b><p class="benDtlDescription"></p>
+                <b>Fecha de Inicio: </b><p class="benDtlFrom"></p>
+                <b>Fecha de Termino: </b><p class="benDtlTo"></p></span>
             </div>
 
             <div data-role="footer" data-position="fixed">
@@ -141,18 +133,14 @@
         <div id="platinum-restaurants" data-role="page">
 
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <h1></h1>
-                <a href="index.html" data-icon="search" data-theme="a"></a>
-            </div>
-
-            <div id="mastercardlogo">
-                <img src="images/mastercardlogo.png">
+                <center><img src="images/mastercardlogo.png"></center>
+                <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
             </div>
 
             <div id="platinum-restaurants-content">
-                <ul data-role="listview">
+                <ul data-role="listview" data-theme="b">
                     
                 </ul>
             </div>
@@ -176,18 +164,13 @@
         <div id="platinum-stores" data-role="page">
 
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <h1></h1>
-                <a href="index.html" data-icon="search" data-theme="a"></a>
+                <center><img src="images/mastercardlogo.png"></center>
+                <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
             </div>
-
-            <div id="mastercardlogo">
-                <img src="images/mastercardlogo.png">
-            </div>
-
             <div id="platinum-stores-content">
-                <ul data-role="listview">
+                <ul data-role="listview" data-theme="b">
                     
                 </ul>
             </div>
@@ -210,27 +193,24 @@
 
         <div id="platinum-business-dtl" data-role="page">
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home"data-iconpos="notext"  data-theme="a"></a>
 
-                <h1></h1>
-                <a href="index.html" data-icon="search" data-theme="a"></a>
+                <center><img src="images/mastercardlogo.png"></center>
+                <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
             </div>
-
-            <div id="mastercardlogo">
-                <img src="images/mastercardlogo.png">
-            </div>
-
-            <div>
+            <div id="bizDtlWrapper">
                 <h2 class="bizDtlTitle"></h2>
                 <img class="bizDtlImg" src="">
-                <p>Teléfono:<span class="bizDtlTel"></span></p>
-                <p>Dirección:<span class="bizDtlAddr"></span></p>
-                <p>Descripción:<span class="bizDtlDesc"></span></p>
-
-                <h2>Ofertas actuales</h2>
-                <ul data-role="listview" class="bizDtlBenefits">
-                </ul>
+                <div id="bizDtlInfo">
+                    <span><b>Teléfono: </b></span><span class="bizDtlTel"></span></p>
+                    <span><b>Dirección: </b></span><span class="bizDtlAddr"></span></p>
+                    <span><b>Descripción: </b></span><span class="bizDtlDesc"></span></p>
+                </div>
             </div>
+                <h3>Ofertas actuales</h2>
+                <ul data-role="listview" data-theme="b" class="bizDtlBenefits">
+                </ul>
+            
 
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">

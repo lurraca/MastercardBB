@@ -3,10 +3,11 @@
 }
 
 #mastercardlogo {
+	left: 50%;
 	position: absolute;
 	top: 0;
 	z-index: 1000;
-	left: 47%;
+	margin-left: -30px;
 }
 
 #bgimage {
@@ -19,3 +20,39 @@
 	width: 100%;
 	
 }
+
+.ui-btn-text{
+	color:black;
+}
+
+.ui-icon-arrow-r{
+
+}
+
+.bizDtlImg{
+	width:25%;
+}
+
+#bizDtlWrapper{
+	margin-left:5%;
+}
+
+
+#bizDtlWrapper span{
+	font-size:12px;
+}
+
+#bizDtlInfo{
+	line-height: 12px;
+	width:70%;
+	float:right;
+}
+
+#platinum-business-dtl h3{
+	margin-left:5%;
+}
+
+#benefitdtlwrapper{
+	margin-left:5%;
+}
+
