@@ -27,3 +27,26 @@
 .ui-icon-arrow-r{
 
 }
+
+.bizDtlImg{
+	width:25%;
+}
+
+#bizDtlWrapper{
+	margin-left:5%;
+}
+
+
+#bizDtlWrapper span{
+	font-size:12px;
+}
+
+#bizDtlInfo{
+	line-height: 12px;
+	width:70%;
+	float:right;
+}
+
+#platinum-business-dtl h3{
+	margin-left:5%;
+}
