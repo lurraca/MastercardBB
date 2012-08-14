@@ -1,3 +1,7 @@
+ function switchCSS(file_path){
+	 $("#custom").attr("href",file_path);
+}
+
 jQuery(function($) {
 
 	var RESTAURANTS_CATEGORY_ID = 1;
@@ -82,6 +86,8 @@ jQuery(function($) {
 			loadBenefitDetail($(this).attr("benefit-id"));
 		});
 	}
+
+	
 
 	var loadBusinesses = function(jqList, bizs) {
 		jqList.empty();

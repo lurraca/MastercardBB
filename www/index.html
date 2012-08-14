@@ -10,13 +10,13 @@
         <script type="text/javascript" src="main.js"></script>
         <link rel="stylesheet" type="text/css" href="jquery.mobile-1.1.1.min.css">
         <link rel="stylesheet" type="text/css" href="jquery.mobile.structure-1.1.1.min.css">
-        <link rel="stylesheet" type="text/css" href="jquery.mobile.theme-1.1.1.min.css">
+        <link rel="stylesheet" type="text/css" id="custom" href="jquery.mobile.theme-1.1.1.min.css">        
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <div id="main" data-role="page">
+        <div id="main" data-role="page" data-theme="a">
 
-            <div id="header" data-role="header" data-position="fixed">
+            <div id="header" data-role="header" data-theme="a" data-position="fixed">
                 <h1></h1>
             </div>
 
@@ -32,20 +32,20 @@
                 <p>Hello world</p>      
             </div>
 
-            <div id="footer" data-role="footer" data-position="fixed">
+            <div id="footer" data-role="footer" data-theme="a" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#">Mastercard Black</a></li>
-                        <li><a href="#platinum-main">Mastercard Platinum</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-black.css');">Mastercard Black</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-platinum.css');">Mastercard Platinum</a></li>
                     </ul>
                 </div>
             </div>
 
         </div>
-        <div id="platinum-main" data-role="page">
+        <div id="card-main" data-theme="" data-role="page">
 
-            <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+            <div data-role="header" data-theme="" data-position="fixed" data-theme="a">
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
                 <h1></h1>
                 <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
@@ -63,7 +63,7 @@
                     
             </div>
 
-            <div data-role="footer" data-position="fixed">
+            <div data-role="footer" data-theme="a" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
                         <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
@@ -77,7 +77,7 @@
         <div id="platinum-benefits" data-role="page">
 
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
                 <h1></h1>
                 <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
@@ -88,7 +88,7 @@
             </div>
 
             <div id="platinum-benefits-content">
-                <ul data-role="listview">
+                <ul data-role="listview" data-theme="b">
                     
                 </ul>
             </div>
@@ -109,7 +109,7 @@
         </div>
         <div id="platinum-benefits-dtl" data-role="page">
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
                 <h1></h1>
                 <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
@@ -141,7 +141,7 @@
         <div id="platinum-restaurants" data-role="page">
 
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
                 <h1></h1>
                 <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
@@ -152,7 +152,7 @@
             </div>
 
             <div id="platinum-restaurants-content">
-                <ul data-role="listview">
+                <ul data-role="listview" data-theme="b">
                     
                 </ul>
             </div>
@@ -176,7 +176,7 @@
         <div id="platinum-stores" data-role="page">
 
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
                 <h1></h1>
                 <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
@@ -187,7 +187,7 @@
             </div>
 
             <div id="platinum-stores-content">
-                <ul data-role="listview">
+                <ul data-role="listview" data-theme="b">
                     
                 </ul>
             </div>
@@ -210,7 +210,7 @@
 
         <div id="platinum-business-dtl" data-role="page">
             <div data-role="header" data-position="fixed">
-                    <a href="index.html" data-icon="home"data-iconpos="notext"  data-theme="a"></a>
+                    <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home"data-iconpos="notext"  data-theme="a"></a>
 
                 <h1></h1>
                 <a href="index.html" data-icon="search" data-iconpos="notext" data-theme="a"></a>
@@ -228,7 +228,7 @@
                 <p>Descripción:<span class="bizDtlDesc"></span></p>
 
                 <h2>Ofertas actuales</h2>
-                <ul data-role="listview" class="bizDtlBenefits">
+                <ul data-role="listview" data-theme="b" class="bizDtlBenefits">
                 </ul>
             </div>
 
