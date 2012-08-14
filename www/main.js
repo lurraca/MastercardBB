@@ -46,9 +46,8 @@ jQuery(function($) {
 
 	var loadBenefitDetail = function(benId) {
 		var ben = _.filter(MasterCardData.benefits, function(ben) {return ben.id == benId})[0];
-		$("#platinum-benefits-dtl .benDtlTitle").html(ben.name);
-		$("#platinum-benefits-dtl .benDtlBusiness").html(_.filter(MasterCardData.businesses, 
-			function(bs) {return bs.id == ben.business_id})[0].name);
+		$("#platinum-benefits-dtl .benDtlTitle").html(_.filter(MasterCardData.businesses, 
+			function(bs) {return bs.id == ben.business_id})[0].name + ' - ' +ben.name);
 		$("#platinum-benefits-dtl .benDtlDescription").html(ben.description);
 		$("#platinum-benefits-dtl .benDtlFrom").html(ben.begin_date);
 		$("#platinum-benefits-dtl .benDtlTo").html(ben.end_date);
