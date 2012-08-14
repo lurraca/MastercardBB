@@ -7,35 +7,48 @@ jQuery(function($) {
 	var populateData = function() {
 		window.MasterCardData = {};
 
-		$.get(server_url + "benefits/active/all.json", function(benefitsStr) {
-			var bens = eval("(" + benefitsStr + ")");
-			var businessesIds = [];
-			businessesIds = _.reduce(bens, 
-				function(xs, el){
-					if(xs.indexOf(el.business_id < 0)) 
-						xs.push(el.business_id);
-					return xs;
-				}, []);
-			var idsStr = _.reduce(businessesIds, function(str, bid) { return str + bid + ","},"");
-
-			$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
-				var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
-				db.transaction(
-					function(tx) {
-						tx.executeSql("CREATE TABLE IF NOT EXISTS data(benefits TEXT, businesses TEXT, update_id INT);");
-						tx.executeSql("DELETE FROM data WHERE 1=1;");
-						tx.executeSql("INSERT INTO data values('"+benefitsStr+"','"+businessesStr+"',1)");
+		var queryDataToObj = function(db) {
+			db.transaction(
+				function(tx) {
+					tx.executeSql("SELECT * FROM data;",[], function(tx,rs){
+						MasterCardData.benefits = eval("(" + rs.rows.item(0).benefits + ")");
+						MasterCardData.businesses = eval("(" + rs.rows.item(0).businesses + ")");
 					});
+				});
+		}
+		$.getJSON(server_url + "get_data_version.json", function(version) {
+			var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
+			db.transaction(function(tx) {
+				tx.executeSql("SELECT * FROM data", [], function(tx, rs) {
+					if(rs.rows.item(0).update_id < version.number) {
+						$.get(server_url + "benefits/active/all.json", function(benefitsStr) {
+							var bens = eval("(" + benefitsStr + ")");
+							var businessesIds = [];
+							businessesIds = _.reduce(bens, 
+								function(xs, el){
+									if(xs.indexOf(el.business_id < 0)) 
+										xs.push(el.business_id);
+									return xs;
+								}, []);
+							var idsStr = _.reduce(businessesIds, function(str, bid) { return str + bid + ","},"");
 
-				db.transaction(
-					function(tx) {
-						tx.executeSql("SELECT * FROM data;",[], function(tx,rs){
-							MasterCardData.benefits = eval("(" + rs.rows.item(0).benefits + ")");
-							MasterCardData.businesses = eval("(" + rs.rows.item(0).businesses + ")");
-						});
-					});
-			}, "html");
-		}, "html");
+							$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
+								db.transaction(
+									function(tx) {
+										tx.executeSql("CREATE TABLE IF NOT EXISTS data(benefits TEXT, businesses TEXT, update_id INT);");
+										tx.executeSql("DELETE FROM data WHERE 1=1;");
+										tx.executeSql("INSERT INTO data values('"+benefitsStr+"','"+businessesStr+"',"+version.number+")");
+									});
+
+									queryDataToObj(db);
+							}, "html");
+						}, "html");
+					} else {
+						queryDataToObj(db);
+					}
+				});
+			});
+		});
 	}
 
 	populateData();
