@@ -1,11 +1,7 @@
  function switchCSS(file_path, image_path){
 	$("#custom").attr("href",file_path);
-	$('#bgimage-img').attr("src",image_path);
+	$('#card-main').css({'background': 'url('+image_path+') no-repeat center center fixed'});
 }
-function bgImage(image_path){
-	$('bgimage').attr("src",image_path)
-}
-
 jQuery(function($) {
 
 	var RESTAURANTS_CATEGORY_ID = 1;
