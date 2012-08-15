@@ -26,10 +26,10 @@
         xmlns:rim="http://www.blackberry.com/ns/widgets"
 	version="1.0.0.0">
 
-  <name>cordovaExample</name>
+  <name>Mastercard Beneficios</name>
 
   <description>
-      A sample application written with Cordova.
+      Aplicacion con el fin de que los clientes de Mastercard Black/Platinum puedan obtener informacion de los beneficios de pagar con su tarjeta de credito.
   </description>
 
   <license href="http://opensource.org/licenses/alphabetical">
