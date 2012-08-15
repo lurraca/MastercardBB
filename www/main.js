@@ -1,5 +1,9 @@
- function switchCSS(file_path){
-	 $("#custom").attr("href",file_path);
+ function switchCSS(file_path, image_path){
+	$("#custom").attr("href",file_path);
+	$('#bgimage-img').attr("src",image_path);
+}
+function bgImage(image_path){
+	$('bgimage').attr("src",image_path)
 }
 
 jQuery(function($) {
