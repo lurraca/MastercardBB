@@ -1,5 +1,5 @@
 #header , #footer {
-	opacity: 0.7;
+	opacity: 0.9;
 }
 
 #mastercardlogo {
@@ -21,10 +21,18 @@
 	
 }
 
-.ui-btn-text{
-	color:black;
+#main .ui-btn-text{
+	color: white;
+	font-weight:bolder;
+
 }
 
+#card-main{
+	overflow: hidden;
+	background: url(../images/platinumbg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover !important;
+
+}
 .ui-icon-arrow-r{
 
 }
@@ -56,3 +64,8 @@
 	margin-left:5%;
 }
 
+#main{
+	overflow: hidden;
+	background: url(../images/introbg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+}

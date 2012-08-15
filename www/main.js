@@ -1,3 +1,14 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+	alert("deviceready");
+blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, 
+function() { 
+history.back();
+return false;
+}); 
+}
+
  function switchCSS(file_path, image_path){
 	$("#custom").attr("href",file_path);
 	$('#card-main').css({'background': 'url('+image_path+') no-repeat center center fixed'});
