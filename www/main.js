@@ -1,17 +1,41 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	alert("deviceready");
-blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, 
-function() { 
-history.back();
-return false;
-}); 
+	checkConnection();
+	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, 
+		function() {
+			history.back();
+			return false;
+		});
 }
+
+function checkConnection() {
+    var networkState = navigator.network.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
+
+
+
+//reset the css on main screen
+$(document).on('pagebeforeshow','#main', function(){
+	$("#custom").attr("href",'jquery.mobile.theme-1.1.1.min.css');  
+});
 
  function switchCSS(file_path, image_path){
 	$("#custom").attr("href",file_path);
-	$('#card-main').css({'background': 'url('+image_path+') no-repeat center center fixed'});
+	if (typeof yourvar != 'undefined'){
+		$('#card-main').css({'background': 'url('+image_path+') no-repeat center center fixed'});
+	}
 }
 jQuery(function($) {
 
