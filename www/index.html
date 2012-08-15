@@ -35,8 +35,8 @@
             <div id="footer" data-role="footer" data-theme="a" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#card-main" onclick="switchCSS('mastercard-black.css');">Mastercard Black</a></li>
-                        <li><a href="#card-main" onclick="switchCSS('mastercard-platinum.css');">Mastercard Platinum</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-black.css','images/blackbg.jpg');">Mastercard Black</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-platinum.css','images/platinumbg.jpg');">Mastercard Platinum</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,7 +44,7 @@
         </div>
         <div id="card-main" data-theme="" data-role="page">
 
-            <div data-role="header" data-theme="" data-position="fixed" data-theme="a">
+            <div data-role="header" data-position="fixed" data-theme="a">
                     <a href="index.html" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
                 <center><img src="images/mastercardlogo.png"></center>
@@ -52,19 +52,19 @@
             </div>
 
             <div id="bgimage">
-                <img src="images/platinumbg.jpg">
+                <img id="bgimage-img" src="images/platinumbg.jpg">
             </div>
 
             <div data-role="content">   
                     
             </div>
 
-            <div data-role="footer" data-theme="a" data-position="fixed">
-                <div data-role="navbar">
+            <div data-role="footer" data-theme="c" data-position="fixed">
+                <div data-role="navbar" data-theme="c">
                     <ul>
-                        <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
-                        <li><a class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
-                        <li><a class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
+                        <li><a data-theme="c" class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
                     </ul>
                 </div>
             </div>
@@ -95,9 +95,9 @@
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
-                        <li><a class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
-                        <li><a class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
+                        <li><a data-theme="c" class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
                     </ul>
                 </div>
             </div>
@@ -122,9 +122,9 @@
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
-                        <li><a class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
-                        <li><a class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
+                        <li><a data-theme="c" class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
                     </ul>
                 </div>
             </div>
@@ -152,9 +152,9 @@
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
-                        <li><a class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
-                        <li><a class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
+                        <li><a data-theme="c" class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
                     </ul>
                 </div>
             </div>
@@ -179,12 +179,12 @@
                     
             </div>
 
-            <div data-role="footer" data-position="fixed">
-                <div data-role="navbar">
+            <div data-role="footer" data-theme="c"  data-position="fixed">
+                <div data-theme="c" data-role="navbar">
                     <ul>
-                        <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
-                        <li><a class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
-                        <li><a class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
+                        <li><a data-theme="c" class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
                     </ul>
                 </div>
             </div>
@@ -212,12 +212,12 @@
                 </ul>
             
 
-            <div data-role="footer" data-position="fixed">
+            <div data-theme="c" data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
-                        <li><a class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
-                        <li><a class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="platinum-restaurants-link" href="#platinum-restaurants">Restaurantes</a></li>
+                        <li><a data-theme="c" class="platinum-stores-link" href="#platinum-stores">Tiendas</a></li>
                     </ul>
                 </div>
             </div>
