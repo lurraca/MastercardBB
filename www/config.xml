@@ -27,6 +27,7 @@
 	version="1.0.0.0">
 
   <name>Mastercard Beneficios</name>
+  <author>MBS - Mobile Business Solutions</author>
 
   <description>
       Aplicacion con el fin de que los clientes de Mastercard Black/Platinum puedan obtener informacion de los beneficios de pagar con su tarjeta de credito.
