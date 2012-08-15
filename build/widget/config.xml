@@ -27,7 +27,7 @@
 	version="1.0.0.0">
 
   <name>Mastercard Beneficios</name>
-  <author>MBS - Mobile Business Solutions</author>
+  <author href="https://www.mbs.com.do" email="info@mbs.com.com">MBS - Mobile Business Solutions</author>
 
   <description>
       Aplicacion con el fin de que los clientes de Mastercard Black/Platinum puedan obtener informacion de los beneficios de pagar con su tarjeta de credito.
@@ -64,7 +64,7 @@
   <icon rim:hover="false" src="resources/icon.png" />
   <icon rim:hover="true" src="resources/icon.png" />
 
-  <rim:loadingScreen backgroundColor="#CFCFCF"
+  <rim:loadingScreen backgroundColor="#acacac"
                      foregroundImage="resources/loading_foreground.png"
 		     onFirstLaunch="true">
     <rim:transitionEffect type="fadeOut" />
