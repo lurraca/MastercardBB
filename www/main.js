@@ -37,8 +37,9 @@ $(document).on('pagebeforeshow','#main', function(){
 		$('#card-main').css({'background': 'url('+image_path+') no-repeat center center fixed'});
 	}
 }
-jQuery(function($) {
 
+jQuery(function($) {
+	$.mobile.defaultPageTransition = "none";
 	var RESTAURANTS_CATEGORY_ID = 1;
 	var STORES_CATEGORY_ID = 2;
 	var server_url = "http://107.20.213.141:3000/";
