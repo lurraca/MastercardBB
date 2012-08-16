@@ -4,8 +4,12 @@ function onDeviceReady() {
 	checkConnection();
 	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, 
 		function() {
-			history.back();
-			return false;
+			if ($.mobile.activePage.attr('id') == 'main') {
+				return true;
+			} else {
+				history.back();
+				return false;
+			}
 		});
 }
 
@@ -21,7 +25,12 @@ function checkConnection() {
     states[Connection.CELL_4G]  = 'Cell 4G connection';
     states[Connection.NONE]     = 'No network connection';
 
-    alert('Connection type: ' + states[networkState]);
+    //alert('Connection type: ' + states[networkState]);
+    if(networkState == Connection.NONE) {
+    	alert("El dispositivo no tiene conexión a internet. Es posible que tenga información guardada de la "+
+    		"última conexión, sin embargo, las imágenes de las empresas no estarán disponibles. Si esta es la"+
+    		" primera vez que abre la aplicación por favor inténtelo nuévamente cuando esté conectado a internet.");
+    }
 }
 
 
