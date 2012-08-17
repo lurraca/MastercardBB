@@ -26,9 +26,19 @@ function checkConnection() {
 
 
 
-//reset the css on main screen
+//reset the css on main screen and set overflow hidden for the 2 main screens
+$(document).on('pagehide','#card-main', function(){
+	if ($("#custom").attr("href") != 'jquery.mobile.theme-1.1.1.min.css'){
+		$("html").css({'overflow':'auto'}); 
+	}
+});
 $(document).on('pagebeforeshow','#main', function(){
-	$("#custom").attr("href",'jquery.mobile.theme-1.1.1.min.css');  
+	$("#custom").attr("href",'jquery.mobile.theme-1.1.1.min.css');
+	$("html").css({'overflow':'hidden'});
+});
+
+$(document).on('pagebeforeshow','#card-main', function(){
+	$("html").css({'overflow':'hidden'});  
 });
 
  function switchCSS(file_path, image_path){
