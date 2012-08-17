@@ -33,7 +33,7 @@ $(document).on('pagebeforeshow','#main', function(){
 
  function switchCSS(file_path, image_path){
 	$("#custom").attr("href",file_path);
-	if (typeof yourvar != 'undefined'){
+	if (typeof image_path != 'undefined'){
 		$('#card-main').css({'background': 'url('+image_path+') no-repeat center center fixed'});
 	}
 }
