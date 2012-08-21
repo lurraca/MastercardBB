@@ -5,7 +5,7 @@ function onDeviceReady() {
 	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, 
 		function() {
 			if ($.mobile.activePage.attr('id') == 'main') {
-				return true;
+				navigator.app.exitApp();
 			} else {
 				history.back();
 				return false;
@@ -27,9 +27,17 @@ function checkConnection() {
 
     //alert('Connection type: ' + states[networkState]);
     if(networkState == Connection.NONE) {
-    	alert("El dispositivo no tiene conexión a internet. Es posible que tenga información guardada de la "+
-    		"última conexión, sin embargo, las imágenes de las empresas no estarán disponibles. Si esta es la"+
-    		" primera vez que abre la aplicación por favor inténtelo nuévamente cuando esté conectado a internet.");
+    	var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
+    	db.transaction(function(tx) {
+			tx.executeSql("SELECT * FROM data", [], function(tx, rs) {
+				if(rs.rows.length == 0) {
+					alert("Usted no tiene conexión a internet ni tiene data previa de la aplicación. La aplicación procederá a cerrarse.");
+					navigator.app.exitApp();
+				} else {
+					alert("Usted no tiene conexión a internet. La data no estará actualizada ni se mostrarán los logos de las emrpesas.");
+				}
+			});
+		});
     }
 }
 
@@ -82,7 +90,7 @@ jQuery(function($) {
 				var businessesIds = [];
 				businessesIds = _.reduce(bens, 
 					function(xs, el){
-						if(xs.indexOf(el.business_id < 0)) 
+						if(xs.indexOf(el.business_id != 0)) 
 							xs.push(el.business_id);
 						return xs;
 					}, []);
