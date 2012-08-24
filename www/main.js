@@ -191,7 +191,7 @@ jQuery(function($) {
 	var loadCategories = function(jqList, categories) {
 		jqList.empty();
 		$.each(categories, function(i, ctg) {
-			jqList.append("<li class='category-lnk' category-id='"+ctg.id+"'><a href='#platinum-stores'>" + ctg.name + "</a></li>");
+			jqList.append("<li class='category-lnk' category-id='"+ctg.id+"'><a href='#platinum-businesses'>" + ctg.name + "</a></li>");
 		});
 		jqList.listview('refresh');
 		$(".category-lnk").click(function() {
@@ -199,12 +199,8 @@ jQuery(function($) {
 		});
 	}
 
-	$(document).delegate("#platinum-restaurants", "pageshow",function() {
-		loadBusinesses($("#platinum-restaurants-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == RESTAURANTS_CATEGORY_ID}));
-	});
-
-	$(document).delegate("#platinum-stores", "pageshow",function() {
-		loadBusinesses($("#platinum-stores-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == MasterCardData.currCatId}));
+	$(document).delegate("#platinum-businesses", "pageshow",function() {
+		loadBusinesses($("#platinum-businesses-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == MasterCardData.currCatId}));
 	});
 
 	$(document).delegate("#categories", "pageshow",function() {
