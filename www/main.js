@@ -102,7 +102,7 @@ jQuery(function($) {
 					$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
 						db.transaction(
 							function(tx) {
-								tx.executeSql("DROP TABLE data;");
+								tx.executeSql("DROP TABLE IF EXISTS data;");
 								tx.executeSql("CREATE TABLE IF NOT EXISTS data(benefits TEXT, businesses TEXT, categories TEXT, update_id INT);");
 								tx.executeSql("DELETE FROM data WHERE 1=1;");
 								tx.executeSql("INSERT INTO data values('"+benefitsStr+"','"+businessesStr+"','"+categoriesStr+"',"+version.number+")");
