@@ -80,4 +80,5 @@
     <rim:permit>record_audio</rim:permit> 
   </rim:permissions>
 
+<preference name="orientation" value="landscape" />
 </widget>
