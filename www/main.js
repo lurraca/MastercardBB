@@ -1,7 +1,7 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	checkConnection();
+	checkConnection();	
 	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, 
 		function() {
 			if ($.mobile.activePage.attr('id') == 'main') {
@@ -34,7 +34,7 @@ function checkConnection() {
 					alert("Usted no tiene conexión a internet ni tiene data previa de la aplicación. La aplicación procederá a cerrarse.");
 					navigator.app.exitApp();
 				} else {
-					alert("Usted no tiene conexión a internet. La data no estará actualizada ni se mostrarán los logos de las emrpesas.");
+					alert("Usted no tiene conexión a internet. La data no estará actualizada ni se mostrarán los logos de las empreesas.");
 				}
 			});
 		});
@@ -169,8 +169,6 @@ jQuery(function($) {
 			loadBenefitDetail($(this).attr("benefit-id"));
 		});
 	}
-
-	
 
 	var loadBusinesses = function(jqList, bizs) {
 		jqList.empty();

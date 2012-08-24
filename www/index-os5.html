@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"  content="width=device-width, height=device-height, initial-scale=1.0, 'maximum-scale=1.0, 'minimum-scale=1.0, user-scalable=no" />
+        <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+        <script type="text/javascript">jQuery.fx.off = true;</script>
+        <script type="text/javascript" src="jquery.mobile-1.1.1.min.js"></script>
+        <script type="text/javascript" src="underscore-min.js"></script>
+        <script type="text/javascript" src="cordova-2.0.0.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="main-os5.js"></script>
+        <link rel="stylesheet" type="text/css" href="jquery.mobile-1.1.1.min.css">
+        <link rel="stylesheet" type="text/css" id="custom" href="jquery.mobile.theme-1.1.1.min.css">        
+        <title></title>
+    </head>
+    <body>
+    	<div id="main" data-role="page" data-theme="a">
+    		<div id="header" data-role="header" data-theme="a" data-position="fixed">
+                <center><img src="images/mastercardlogo.png"></center>
+            </div>
+            <div data-role="content">   
+            </div>
+            <div id="footer" data-role="footer" data-theme="a">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-black.css','images/blackbg.jpg');">Mastercard Black</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-platinum.css','images/platinumbg.jpg');">Mastercard Platinum</a></li>
+                    </ul>
+                </div>
+            </div>
+
+    	</div>
+    </body>
+  </html>
