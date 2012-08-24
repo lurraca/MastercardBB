@@ -80,6 +80,7 @@ jQuery(function($) {
 					tx.executeSql("SELECT * FROM data;",[], function(tx,rs){
 						MasterCardData.benefits = eval("(" + rs.rows.item(0).benefits + ")");
 						MasterCardData.businesses = eval("(" + rs.rows.item(0).businesses + ")");
+						MasterCardData.categories = eval("(" + rs.rows.item(0).categories + ")");
 					});
 				});
 		}
@@ -96,15 +97,19 @@ jQuery(function($) {
 					}, []);
 				var idsStr = _.reduce(businessesIds, function(str, bid) { return str + bid + ","},"");
 
-				$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
-					db.transaction(
-						function(tx) {
-							tx.executeSql("CREATE TABLE IF NOT EXISTS data(benefits TEXT, businesses TEXT, update_id INT);");
-							tx.executeSql("DELETE FROM data WHERE 1=1;");
-							tx.executeSql("INSERT INTO data values('"+benefitsStr+"','"+businessesStr+"',"+version.number+")");
-						});
 
-						queryDataToObj(db);
+				$.get(server_url + "categories.json", function(categoriesStr) {
+					$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
+						db.transaction(
+							function(tx) {
+								tx.executeSql("DROP TABLE data;");
+								tx.executeSql("CREATE TABLE IF NOT EXISTS data(benefits TEXT, businesses TEXT, categories TEXT, update_id INT);");
+								tx.executeSql("DELETE FROM data WHERE 1=1;");
+								tx.executeSql("INSERT INTO data values('"+benefitsStr+"','"+businessesStr+"','"+categoriesStr+"',"+version.number+")");
+							});
+
+							queryDataToObj(db);
+					}, "html");
 				}, "html");
 			}, "html");
 		}
@@ -180,11 +185,23 @@ jQuery(function($) {
 			loadBusinessDetail($(this).attr("business-id"));
 		});
 	};
-	$(document).delegate("#platinum-restaurants", "pageshow",function() {
-		loadBusinesses($("#platinum-restaurants-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == RESTAURANTS_CATEGORY_ID}));
+
+	var loadCategories = function(jqList, categories) {
+		jqList.empty();
+		$.each(categories, function(i, ctg) {
+			jqList.append("<li class='category-lnk' category-id='"+ctg.id+"'><a href='#platinum-businesses'>" + ctg.name + "</a></li>");
+		});
+		jqList.listview('refresh');
+		$(".category-lnk").click(function() {
+			MasterCardData.currCatId = $(this).attr('category-id');
+		});
+	}
+
+	$(document).delegate("#platinum-businesses", "pageshow",function() {
+		loadBusinesses($("#platinum-businesses-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == MasterCardData.currCatId}));
 	});
 
-	$(document).delegate("#platinum-stores", "pageshow",function() {
-		loadBusinesses($("#platinum-stores-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == STORES_CATEGORY_ID}));
+	$(document).delegate("#categories", "pageshow",function() {
+		loadCategories($("#categories-content ul"), MasterCardData.categories);
 	});
 });
