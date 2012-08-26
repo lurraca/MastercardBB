@@ -1,8 +1,8 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	checkConnection();	
-	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, 
+	checkConnection()
+	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK,
 		function() {
 			if ($.mobile.activePage.attr('id') == 'main') {
 				navigator.app.exitApp();
@@ -46,7 +46,7 @@ function checkConnection() {
 //reset the css on main screen and set overflow hidden for the 2 main screens
 $(document).on('pagehide','#card-main', function(){
 	if ($("#custom").attr("href") != 'jquery.mobile.theme-1.1.1.min.css'){
-		$("html").css({'overflow':'auto'}); 
+		$("html").css({'overflow':'auto'});
 	}
 });
 $(document).on('pagebeforeshow','#main', function(){
@@ -55,7 +55,7 @@ $(document).on('pagebeforeshow','#main', function(){
 });
 
 $(document).on('pagebeforeshow','#card-main', function(){
-	$("html").css({'overflow':'hidden'});  
+	$("html").css({'overflow':'hidden'});
 });
 
  function switchCSS(file_path, image_path){
@@ -69,7 +69,7 @@ jQuery(function($) {
 	$.mobile.defaultPageTransition = "none";
 	var RESTAURANTS_CATEGORY_ID = 1;
 	var STORES_CATEGORY_ID = 2;
-	var server_url = "http://107.20.213.141:3000/";
+	var server_url = "http://mastercard.devmbs.com/";
 
 	var populateData = function() {
 		window.MasterCardData = {};
