@@ -198,10 +198,9 @@ jQuery(function($) {
 	var loadCategories = function(jqList, categories) {
 		jqList.empty();
 		$.each(categories, function(i, ctg) {
-			jqList.append("<a href='#platinum-businesses' class='category-lnk' category-id='"+ctg.id+"' data-role='button'>" + ctg.name + "</a>");
+			jqList.append("<a href='#platinum-businesses' data-theme='c' class='category-lnk' category-id='"+ctg.id+"' data-role='button'>" + ctg.name + "</a>");
 		});
-		//jqList.listview('refresh');
-		$(".category-lnk").trigger('create');
+		$("#categories").trigger('create');
 		$(".category-lnk").click(function() {
 			MasterCardData.currCatId = $(this).attr('category-id');
 		});
