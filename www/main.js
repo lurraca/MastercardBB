@@ -189,9 +189,10 @@ jQuery(function($) {
 	var loadCategories = function(jqList, categories) {
 		jqList.empty();
 		$.each(categories, function(i, ctg) {
-			jqList.append("<li class='category-lnk' category-id='"+ctg.id+"'><a href='#platinum-businesses'>" + ctg.name + "</a></li>");
+			jqList.append("<a href='#platinum-businesses' class='category-lnk' category-id='"+ctg.id+"' data-role='button'>" + ctg.name + "</a>");
 		});
-		jqList.listview('refresh');
+		//jqList.listview('refresh');
+		$(".category-lnk").trigger('create');
 		$(".category-lnk").click(function() {
 			MasterCardData.currCatId = $(this).attr('category-id');
 		});
@@ -202,6 +203,6 @@ jQuery(function($) {
 	});
 
 	$(document).delegate("#categories", "pageshow",function() {
-		loadCategories($("#categories-content ul"), MasterCardData.categories);
+		loadCategories($("#categories-content"), MasterCardData.categories);
 	});
 });
