@@ -70,6 +70,13 @@ jQuery(function($) {
 	var RESTAURANTS_CATEGORY_ID = 1;
 	var STORES_CATEGORY_ID = 2;
 	var server_url = "http://mastercard.devmbs.com/";
+	var sendlocalytics =  function(event){
+	localyticsSession.init("a0aa57284cbe8a78a6268e2-3fe88d2a-f01a-11e1-4f7f-00ef75f32667");
+	localyticsSession.open();
+	localyticsSession.tagEvent(event);
+	localyticsSession.upload();
+	console.log("Localytic fired.")
+	}
 
 	var populateData = function() {
 		window.MasterCardData = {};
@@ -87,11 +94,12 @@ jQuery(function($) {
 
 		var getNewData = function(db, version) {
 			$.get(server_url + "benefits/active/all.json", function(benefitsStr) {
+				sendlocalytics("getNewData");
 				var bens = eval("(" + benefitsStr + ")");
 				var businessesIds = [];
-				businessesIds = _.reduce(bens, 
+				businessesIds = _.reduce(bens,
 					function(xs, el){
-						if(xs.indexOf(el.business_id != 0)) 
+						if(xs.indexOf(el.business_id != 0))
 							xs.push(el.business_id);
 						return xs;
 					}, []);
@@ -114,6 +122,7 @@ jQuery(function($) {
 			}, "html");
 		}
 		$.getJSON(server_url + "get_data_version.json", function(version) {
+			sendlocalytics("getDataVersion");
 			var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
 			db.transaction(function(tx) {
 				tx.executeSql("SELECT * FROM data", [], function(tx, rs) {
