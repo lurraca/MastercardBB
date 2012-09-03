@@ -1,46 +1,156 @@
+$(function() {
+	$.mobile.defaultPageTransition = "none";	
+});
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
+var isNetworkAvailable= null;
+var isDatabasePresent = null;
+var MODES = {"Internet + DB":1, "No Internet + DB":2, "Internet + No DB":3, "No Internet + No DB":4}
+var actualMode;
+var actualVersion;
+function networkAvailable() {
+   return isNetworkAvailable;
+}
+
+function databaseAvailable(){
+	return isDatabasePresent;
+}
+
+function setOffline() {
+    isNetworkAvailable=false;
+    console.log("Device is Offline")
+}
+
+function setDatabase(status){
+	isDatabasePresent = status;
+}
+
+function setOnline() {
+    isNetworkAvailable=true;
+    console.log("Device is Online");
+}
+
+function block(){
+	$.blockUI({ message: $('#loader'), css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } }); 
+}
+
 function onDeviceReady() {
-	checkConnection()
-	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK,
-		function() {
-			if ($.mobile.activePage.attr('id') == 'main') {
-				navigator.app.exitApp();
-			} else {
-				history.back();
-				return false;
-			}
-		});
+	console.log("PhoneGap Loaded!");
+	block();
+	checkConnection();
+    document.addEventListener("offline", setOffline, false);
+    document.addEventListener("resume", onResume, false);
+    document.addEventListener("online", setOnline, false);
+	//alert("Phonegap Loaded");
 }
 
-function checkConnection() {
-    var networkState = navigator.network.connection.type;
 
-    var states = {};
-    states[Connection.UNKNOWN]  = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI]     = 'WiFi connection';
-    states[Connection.CELL_2G]  = 'Cell 2G connection';
-    states[Connection.CELL_3G]  = 'Cell 3G connection';
-    states[Connection.CELL_4G]  = 'Cell 4G connection';
-    states[Connection.NONE]     = 'No network connection';
-
-    //alert('Connection type: ' + states[networkState]);
-    if(networkState == Connection.NONE) {
-    	var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
-    	db.transaction(function(tx) {
-			tx.executeSql("SELECT * FROM data", [], function(tx, rs) {
-				if(rs.rows.length == 0) {
-					alert("Usted no tiene conexión a internet ni tiene data previa de la aplicación. La aplicación procederá a cerrarse.");
-					navigator.app.exitApp();
-				} else {
-					alert("Usted no tiene conexión a internet. La data no estará actualizada ni se mostrarán los logos de las empreesas.");
-				}
-			});
-		});
-    }
+function onResume() {
+   setTimeout(function() {
+          // TODO: do your thing!
+           location.replace("index.html");
+        }, 0);
 }
 
+function checkConnection(){
+	$.ajax({
+		url:"http://mastercard.devmbs.com/get_data_version.json",
+		dataType : 'json',
+		success : function() { checkDatabase(); setOnline(); },
+		error : function() { checkDatabase(); setOffline() },
+		timeout : 5000
+	});
+}
+
+function doFlow(status){
+	if(status){
+		//DB True
+		if(networkAvailable()){
+			//Internet + Database created! Done!
+			$.unblockUI();
+			actualMode = 1;
+			populateData();
+		}
+		else {
+			//No Internet + Database created! Done!
+			actualMode = 2;
+			populateData();
+			$.unblockUI();
+		}
+	} else {
+		//No DB
+		if(networkAvailable()){
+			//Internet + No database, Download! Done!
+			actualMode = 3;
+			populateData();
+			$.unblockUI();
+		} else {
+			//No DB + No data
+			$.unblockUI();
+			actualMode = 4;
+			$.blockUI({ message: 'Usted no tiene conexión a internet ni tiene data previa de la aplicación. Favor intentar el restablecer el servicio.', css: { 
+            	border: 'none',
+            	top: '40%',
+            	left: '10%',
+            	width: '70%',
+            	padding: '15px',
+            	backgroundColor: '#000',
+            	'-webkit-border-radius': '10px',
+            	'-moz-border-radius': '10px',
+            	opacity: .5,
+            	color: '#fff'
+        } });
+		}
+	}
+
+}
+
+function checkDatabase(){
+	var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
+	db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM data", [], function (tx, rs) { setDatabase(true); doFlow(true);},
+      function (tx, err) { setDatabase(false); doFlow(false);});
+	});
+	
+}
+
+// function checkConnection() {
+//     var networkState = navigator.network.connection.type;
+
+//     var states = {};
+//     states[Connection.UNKNOWN]  = 'Unknown connection';
+//     states[Connection.ETHERNET] = 'Ethernet connection';
+//     states[Connection.WIFI]     = 'WiFi connection';
+//     states[Connection.CELL_2G]  = 'Cell 2G connection';
+//     states[Connection.CELL_3G]  = 'Cell 3G connection';
+//     states[Connection.CELL_4G]  = 'Cell 4G connection';
+//     states[Connection.NONE]     = 'No network connection';
+//     // Check network status
+//     //
+//     //alert('Connection type: ' + states[networkState]);
+//     if(networkState == Connection.NONE) {
+//     	var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
+//     	db.transaction(function(tx) {
+// 			tx.executeSql("SELECT * FROM data", [], function(tx, rs) {
+// 				if(rs.rows.length == 0) {
+// 					alert("Usted no tiene conexión a internet ni tiene data previa de la aplicación. La aplicación procederá a cerrarse.");
+// 					navigator.app.exitApp();
+// 				} else {
+// 					alert("Usted no tiene conexión a internet. La data no estará actualizada ni se mostrarán los logos de las empreesas.");
+// 				}
+// 			});
+// 		});
+//     }
+// }
 
 
 //reset the css on main screen and set overflow hidden for the 2 main screens
@@ -65,21 +175,20 @@ $(document).on('pagebeforeshow','#card-main', function(){
 	}
 }
 
-jQuery(function($) {
-	$.mobile.defaultPageTransition = "none";
+
 	var RESTAURANTS_CATEGORY_ID = 1;
 	var STORES_CATEGORY_ID = 2;
 	var server_url = "http://mastercard.devmbs.com/";
 	var sendlocalytics =  function(event){
-	localyticsSession.init("a0aa57284cbe8a78a6268e2-3fe88d2a-f01a-11e1-4f7f-00ef75f32667");
-	localyticsSession.open();
-	localyticsSession.tagEvent(event);
-	localyticsSession.upload();
-	console.log("Localytic fired.")
+		localyticsSession.init("a0aa57284cbe8a78a6268e2-3fe88d2a-f01a-11e1-4f7f-00ef75f32667");
+		localyticsSession.open();
+		localyticsSession.tagEvent(event);
+		localyticsSession.upload();
+		console.log("Localytic fired.")
 	}
 
 	var populateData = function() {
-		window.MasterCardData = {};
+
 
 		var queryDataToObj = function(db) {
 			db.transaction(
@@ -93,13 +202,15 @@ jQuery(function($) {
 		}
 
 		var getNewData = function(db, version) {
+			console.log("Getting new data: ");
 			$.get(server_url + "benefits/active/all.json", function(benefitsStr) {
+				console.log("Getting all active businesses");
 				sendlocalytics("getNewData");
 				var bens = eval("(" + benefitsStr + ")");
 				var businessesIds = [];
-				businessesIds = _.reduce(bens,
+				businessesIds = _.reduce(bens, 
 					function(xs, el){
-						if(xs.indexOf(el.business_id != 0))
+						if(xs.indexOf(el.business_id != 0)) 
 							xs.push(el.business_id);
 						return xs;
 					}, []);
@@ -107,6 +218,7 @@ jQuery(function($) {
 
 
 				$.get(server_url + "categories.json", function(categoriesStr) {
+					console.log("Getting all categories");
 					$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
 						db.transaction(
 							function(tx) {
@@ -115,32 +227,55 @@ jQuery(function($) {
 								tx.executeSql("DELETE FROM data WHERE 1=1;");
 								tx.executeSql("INSERT INTO data values('"+benefitsStr+"','"+businessesStr+"','"+categoriesStr+"',"+version.number+")");
 							});
-
 							queryDataToObj(db);
 					}, "html");
 				}, "html");
 			}, "html");
 		}
-		$.getJSON(server_url + "get_data_version.json", function(version) {
-			sendlocalytics("getDataVersion");
-			var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
-			db.transaction(function(tx) {
-				tx.executeSql("SELECT * FROM data", [], function(tx, rs) {
-					if(rs.rows.item(0).update_id < version.number) {
-						getNewData(db, version);
-					} else {
-						queryDataToObj(db);
-					}
-				});
-			},
-			function() {
+		var getDataVersion = function (){
+			$.getJSON(server_url + "get_data_version.json", function(version) {
+				console.log("Getting data version. Version: :"+version.number);
+				sendlocalytics("getDataVersion");
+				actualVersion = version;
 				var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
-				getNewData(db, version);
+				if(databaseAvailable){
+					var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
+					db.transaction(function(tx) {
+						tx.executeSql("SELECT * FROM data", [], function(tx, rs) {
+							if(rs.rows.item(0).update_id !== version.number) {
+								getNewData(db, version);
+							} else {
+								queryDataToObj(db);
+							}
+						});
+					},
+					function() {
+						var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
+						getNewData(db, version);
+					});
+				} else {
+					getNewData(db, version);
+				}
 			});
-		});
-	}
-
-	populateData();
+		}
+		window.MasterCardData = {};
+		switch(actualMode){
+		case 1:
+			getDataVersion();
+  			break;
+		case 2:
+			queryDataToObj(window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000));
+			break;
+		case 3:
+			getDataVersion();
+			break;
+		case 4:
+			onDeviceReady();
+			break;
+		default:
+		 	
+		}
+	//populateData();
 
 	var loadBenefitDetail = function(benId) {
 		var ben = _.filter(MasterCardData.benefits, function(ben) {return ben.id == benId})[0];
@@ -154,7 +289,9 @@ jQuery(function($) {
 	$(document).delegate("#platinum-benefits", "pageshow",function() {
 		$("#platinum-benefits-content ul").empty();
 		$.each(MasterCardData.benefits, function(i,el) {
-			$("#platinum-benefits-content ul").append("<li class='benefit-lnk' benefit-id='"+el.id+"'><a href='#platinum-benefits-dtl'>" + el.name + "</a></li>");
+			biz = _.filter(MasterCardData.businesses, function(bs) {return bs.id == el.business_id})[0];
+			$("#platinum-benefits-content ul").append("<li class='benefit-lnk' benefit-id='"+el.id+"'><h3>"+biz.name
+				+"</h3><a href='#platinum-benefits-dtl'><p>" + el.name + "</p></a></li>");
 		});
 		$("#platinum-benefits-content ul").listview('refresh');
 		$(".benefit-lnk").click(function() {
@@ -165,7 +302,11 @@ jQuery(function($) {
 	var loadBusinessDetail = function(bizId) {
 		var biz = _.filter(MasterCardData.businesses, function(bz) {return bz.id == bizId})[0];
 		$("#platinum-business-dtl .bizDtlTitle").html(biz.name);
-		$("#platinum-business-dtl .bizDtlImg").attr("src", server_url + biz.logo_url);
+     	if(networkAvailable()){
+     		$("#platinum-business-dtl .bizDtlImg").attr("src", server_url + biz.logo_url);
+       	} else {
+       		$("#platinum-business-dtl .bizDtlImg").attr("src","images/noinet.jpg");
+       }
 		$("#platinum-business-dtl .bizDtlTel").html(biz.phone);
 		$("#platinum-business-dtl .bizDtlAddr").html(biz.address);
 		$("#platinum-business-dtl .bizDtlDesc").html(biz.description);
@@ -211,6 +352,5 @@ jQuery(function($) {
 	});
 
 	$(document).delegate("#categories", "pageshow",function() {
-		loadCategories($("#categories-content"), MasterCardData.categories);
-	});
-});
+		loadCategories($("#categories-content ul"), MasterCardData.categories);
+	});}

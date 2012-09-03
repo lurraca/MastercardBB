@@ -5,28 +5,28 @@
         <meta name="viewport"  content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no" />
         <title></title>
         <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-        <script type="text/javascript">jQuery.fx.off = true;</script>
         <script type="text/javascript" src="jquery.mobile-1.1.1.min.js"></script>
-        <script type="text/javascript" src="jquery.mobile.fixedToolbar.polyfill.js"></script>
         <script type="text/javascript" src="underscore-min.js"></script>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
-        <script type="text/javascript" src="localytics-latest.js"></script>
         <script type="text/javascript" src="main.js"></script>
-        <script type="text/javascript" src="oscheck.js"></script>
+        <script type="text/javascript" src="jquery.blockUI.js"></script>
+        <script language="JavaScript" type="text/javascript" src="localytics-latest.js"></script>
         <link rel="stylesheet" type="text/css" href="jquery.mobile-1.1.1.min.css">
-        <link rel="stylesheet" type="text/css" href="jquery.mobile.fixedToolbar.polyfill.css">
-        <link rel="stylesheet" type="text/css" id="custom" href="jquery.mobile.theme-1.1.1.min.css">        
+        <link rel="stylesheet" type="text/css" id="custom" href="jquery.mobile.theme-1.1.1.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
         <div id="main" data-role="page" data-theme="a">
+            <div id="loader" style="display:none;"> 
+                <img src="./images/ajax-loader.gif" />
+            </div> 
 
             <div id="header" data-role="header" data-theme="a" data-position="fixed">
-                <h1></h1>
+                <center><h1 id="logo">My Logo</h1></center>
             </div>
 
             <div id="mastercardlogo">
-                <img src="images/mastercardlogo.png">
+                
             </div>
 
             <div id="bgimage">
@@ -52,7 +52,7 @@
             <div data-role="header" data-position="fixed" data-theme="a">
                     <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <center><img src="images/mastercardlogo.png"></center>
+                <center><h1 id="logo">My Logo</h1></center>
                 <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
             </div>
             <div data-role="content">     
@@ -74,7 +74,7 @@
             <div data-role="header" data-position="fixed">
                     <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <center><img src="images/mastercardlogo.png"></center>
+                <center><h1 id="logo">My Logo</h1></center>
                 <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
             </div>
 
@@ -82,7 +82,7 @@
             </div>
 
             <div id="platinum-benefits-content">
-                <ul data-role="listview" data-theme="b">
+                <ul data-role="listview" data-theme="b"  data-inset="true">
                     
                 </ul>
             </div>
@@ -105,7 +105,7 @@
             <div data-role="header" data-position="fixed">
                     <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <center><img src="images/mastercardlogo.png"></center>
+                <center><h1 id="logo">My Logo</h1></center>
                 <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
             </div>
 
@@ -134,7 +134,7 @@
             <div data-role="header" data-position="fixed">
                     <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <center><img src="images/mastercardlogo.png"></center>
+                <center><h1 id="logo">My Logo</h1></center>
                 <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
             </div>
             <div id="platinum-businesses-content">
@@ -163,12 +163,12 @@
             <div data-role="header" data-position="fixed">
                     <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home"data-iconpos="notext"  data-theme="a"></a>
 
-                <center><img src="images/mastercardlogo.png"></center>
+                <center><h1 id="logo">My Logo</h1></center>
                 <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
             </div>
             <div id="bizDtlWrapper">
                 <h2 class="bizDtlTitle"></h2>
-                <img class="bizDtlImg" src="">
+                <img class="bizDtlImg" src="" />
                 <div id="bizDtlInfo">
                     <span><b>Teléfono: </b></span><span class="bizDtlTel"></span></p>
                     <span><b>Dirección: </b></span><span class="bizDtlAddr"></span></p>
@@ -196,11 +196,14 @@
             <div data-role="header" data-position="fixed">
                     <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
 
-                <center><img src="images/mastercardlogo.png"></center>
+                <center><h1 id="logo">My Logo</h1></center>
                 <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
             </div>
 
             <div id="categories-content">
+                <ul data-role="listview" data-theme="b">
+                    
+                </ul>
             </div>
 
             <div data-role="content">   

@@ -2,12 +2,37 @@
 	opacity: 0.9;
 }
 
-#mastercardlogo {
-	left: 50%;
-	position: absolute;
-	top: 0;
-	z-index: 1000;
-	margin-left: -30px;
+#logo{
+	background:url(../images/mastercardlogo.png) no-repeat center center;
+	margin: 0px 0 3px 0;
+	text-indent:-9999px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+	#logo{
+	background:url(../images/mastercardlogo@2x.png) no-repeat center center;
+	margin: 0px 0 0px 0;
+	-webkit-background-size: auto 30px ;
+	-moz-background-size: auto 30px ;
+	background-size: auto 30px ;
+	text-indent:-9999px;
+	}
+}
+
+.ui-header{
+	margin-top: -2px;
+}
+
+.ui-btn-inner {
+font-size: 12px;
+}
+
+.category-lnk{
+	font-size: 16px;
+}
+
+#categories-content .ui-btn-inner {
+font-size: 18px;
 }
 
 #bgimage {
@@ -18,7 +43,6 @@
 
 #bgimage img {
 	width: 100%;
-	
 }
 
 #main .ui-btn-text{
@@ -39,13 +63,17 @@
 .ui-icon-arrow-r{
 
 }
-
+#platinum-benefits-content h3{
+	margin-left:2% !important;
+}
 .bizDtlImg{
 	width:25%;
 }
 
+
 #bizDtlWrapper{
 	margin-left:5%;
+	float:left;
 }
 
 
@@ -69,6 +97,6 @@
 
 #main{
 	overflow: hidden;
-	background: url(../images/introbg.jpg) no-repeat center center fixed;
+	background: url(../images/playa.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 }
