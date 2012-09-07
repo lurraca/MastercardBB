@@ -44,13 +44,36 @@ function block(){
 }
 
 function onDeviceReady() {
-	console.log("PhoneGap Loaded!");
-	block();
+	window.isBbOs5 = false;
+	if(navigator.userAgent.match(/(BlackBerry)/)){
+		if(device.version.match(/\d/)==5){
+			window.isBbOs5 = true;
+		}
+	}
+
+	alert(isBbOs5);
+	//console.log("PhoneGap Loaded!");
+	if (!isBbOs5) {
+		block();
+	} else {
+		alert("got it");
+		loadOs5Stuff();
+	}
+	alert("kkk");
 	checkConnection();
     document.addEventListener("offline", setOffline, false);
     document.addEventListener("resume", onResume, false);
     document.addEventListener("online", setOnline, false);
 	//alert("Phonegap Loaded");
+	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK,
+		function() {
+			if ($.mobile.activePage.attr('id') == 'main') {
+				navigator.app.exitApp();
+			} else {
+				history.back();
+				return false;
+			}
+		});
 }
 
 

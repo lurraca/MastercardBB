@@ -53,7 +53,6 @@ font-size: 18px;
 
 #card-main{
 	overflow: hidden;
-	background: url(../images/platinumbg.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover !important;
 	-moz-background-size: cover;
 	-o-background-size: cover;

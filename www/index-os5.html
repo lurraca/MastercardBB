@@ -9,13 +9,20 @@
         <script type="text/javascript" src="underscore-min.js"></script>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
         <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="jquery.blockUI.js"></script>
         <script type="text/javascript" src="main-os5.js"></script>
+        <script language="JavaScript" type="text/javascript" src="localytics-latest.js"></script>
         <link rel="stylesheet" type="text/css" href="jquery.mobile-1.1.1.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" id="custom" href="jquery.mobile.theme-1.1.1.min.css">        
         <title></title>
     </head>
     <body>
     	<div id="main" data-role="page" data-theme="a">
+            <div id="loader" style="display:none;"> 
+                <img src="./images/ajax-loader.gif" />
+            </div> 
+
     		<div id="header" data-role="header" data-theme="a">
                 <center><img src="images/mastercardlogo.png"></center>
             </div>
@@ -25,11 +32,180 @@
                 <div data-role="navbar">
                     <ul>
                         <li><a href="#card-main" onclick="switchCSS('mastercard-black.css','images/blackbg.jpg');">Mastercard Black</a></li>
-                        <li><a href="#card-main" onclick="switchCSS('mastercard-platinum.css','images/platinumbg.jpg');">Mastercard Platinum</a></li>
+                        <li><a href="#card-main" onclick="switchCSS('mastercard-platinum.css');">Mastercard Platinum</a></li>
                     </ul>
                 </div>
             </div>
-
     	</div>
+        <div id="card-main" data-theme="" data-role="page">
+
+            <div data-role="header" data-theme="a">
+                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+                        <center><img src="images/mastercardlogo.png"></center>
+                <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
+            </div>
+            <div data-role="content">     
+            </div>
+
+            <div data-role="footer" data-theme="c">
+                <div data-role="navbar" data-theme="c">
+                    <ul>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="platinum-benefits" data-role="page">
+
+            <div data-role="header">
+                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+
+                <center><h1 id="logo">My Logo</h1></center>
+                <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
+            </div>
+
+            <div id="mastercardlogo">
+            </div>
+
+            <div id="platinum-benefits-content">
+                <ul data-role="listview" data-theme="b"  data-inset="true">
+                    
+                </ul>
+            </div>
+
+            <div data-role="content">   
+                    
+            </div>
+
+            <div data-role="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="platinum-benefits-dtl" data-role="page">
+            <div data-role="header" >
+                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+
+                <center><h1 id="logo">My Logo</h1></center>
+                <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
+            </div>
+
+            <div id="benefitdtlwrapper">
+                <h2 class="benDtlTitle"></h2>
+                <h2 class="benDtlBusiness"></h2>
+                <span style="font-size:14px;">
+                <b>Descripcion: </b><p class="benDtlDescription"></p>
+                <b>Fecha de Inicio: </b><p class="benDtlFrom"></p>
+                <b>Fecha de Termino: </b><p class="benDtlTo"></p></span>
+            </div>
+
+            <div data-role="footer" >
+                <div data-role="navbar">
+                    <ul>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+                <div id="platinum-businesses" data-role="page">
+
+            <div data-role="header" >
+                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+
+                <center><h1 id="logo">My Logo</h1></center>
+                <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
+            </div>
+            <div id="platinum-businesses-content">
+                <ul data-role="listview" data-theme="b">
+                    
+                </ul>
+            </div>
+
+            <div data-role="content">   
+                    
+            </div>
+
+            <div data-role="footer" data-theme="c"  >
+                <div data-theme="c" data-role="navbar">
+                    <ul>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="platinum-business-dtl" data-role="page">
+            <div data-role="header" >
+                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home"data-iconpos="notext"  data-theme="a"></a>
+
+                <center><h1 id="logo">My Logo</h1></center>
+                <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
+            </div>
+            <div id="bizDtlWrapper">
+                <h2 class="bizDtlTitle"></h2>
+                <img class="bizDtlImg" src="" />
+                <div id="bizDtlInfo">
+                    <span><b>Teléfono: </b></span><span class="bizDtlTel"></span></p>
+                    <span><b>Dirección: </b></span><span class="bizDtlAddr"></span></p>
+                    <span><b>Descripción: </b></span><span class="bizDtlDesc"></span></p>
+                </div>
+            </div>
+                <h3>Ofertas actuales</h2>
+                <ul data-role="listview" data-theme="b" class="bizDtlBenefits">
+                </ul>
+            
+
+            <div data-theme="c" data-role="footer" >
+                <div data-role="navbar">
+                    <ul>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="categories" data-role="page">
+
+            <div data-role="header" >
+                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext" data-theme="a"></a>
+
+                <center><h1 id="logo">My Logo</h1></center>
+                <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
+            </div>
+
+            <div id="categories-content">
+                <ul data-role="listview" data-theme="b">
+                    
+                </ul>
+            </div>
+
+            <div data-role="content">   
+                    
+            </div>
+
+            <div data-role="footer" >
+                <div data-role="navbar">
+                    <ul>
+                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
+                        <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
     </body>
   </html>
