@@ -59,7 +59,6 @@ function onDeviceReady() {
 		alert("got it");
 		loadOs5Stuff();
 	}
-	alert("kkk");
 	checkConnection();
     document.addEventListener("offline", setOffline, false);
     document.addEventListener("resume", onResume, false);
@@ -134,14 +133,20 @@ function doFlow(status){
         } });
 		}
 	}
-
 }
 
 function checkDatabase(){
+	if (isBbOs5) {
+		alert("doflow os 5");
+		$.unblockUI();
+		actualMode = 5;
+		populateData();
+		return ;
+	}
 	var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT * FROM data", [], function (tx, rs) { setDatabase(true); doFlow(true);},
-      function (tx, err) { setDatabase(false); doFlow(false);});
+      function (tx, err) {setDatabase(false); doFlow(false);});
 	});
 	
 }
@@ -189,6 +194,10 @@ $(document).on('pagebeforeshow','#main', function(){
 
 $(document).on('pagebeforeshow','#card-main', function(){
 	$("html").css({'overflow':'hidden'});
+	if(isBbOs5) {
+		alert("...");
+		loadOs5Stuff();
+	}
 });
 
  function switchCSS(file_path, image_path){
@@ -281,7 +290,38 @@ $(document).on('pagebeforeshow','#card-main', function(){
 				}
 			});
 		}
+
+		var os5LoadData = function() {
+			alert("djooyyy");
+			$.get(server_url + "benefits/active/all.json", function(benefitsStr) {
+				alert("1");
+				console.log("Getting all active businesses");
+				sendlocalytics("getNewData");
+				var bens = eval("(" + benefitsStr + ")");
+				var businessesIds = [];
+				businessesIds = _.reduce(bens, 
+					function(xs, el){
+						if(xs.indexOf(el.business_id != 0)) 
+							xs.push(el.business_id);
+						return xs;
+					}, []);
+				var idsStr = _.reduce(businessesIds, function(str, bid) { return str + bid + ","},"");
+
+
+				$.get(server_url + "categories.json", function(categoriesStr) {
+					alert("2");
+					console.log("Getting all categories");
+					$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
+						alert("3");
+						MasterCardData.benefits = eval("(" + benefitsStr + ")");
+						MasterCardData.businesses = eval("(" + businessesStr + ")");
+						MasterCardData.categories = eval("(" + categoriesStr + ")");
+					}, "html");
+				}, "html");
+			}, "html");
+		}
 		window.MasterCardData = {};
+		alert(actualMode);
 		switch(actualMode){
 		case 1:
 			getDataVersion();
@@ -294,6 +334,10 @@ $(document).on('pagebeforeshow','#card-main', function(){
 			break;
 		case 4:
 			onDeviceReady();
+			break;
+		case 5:
+			alert("alertoncase");
+			os5LoadData();
 			break;
 		default:
 		 	

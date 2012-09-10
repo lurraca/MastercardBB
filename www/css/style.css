@@ -8,17 +8,6 @@
 	text-indent:-9999px;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
-	#logo{
-	background:url(../images/mastercardlogo@2x.png) no-repeat center center;
-	margin: 0px 0 0px 0;
-	-webkit-background-size: auto 30px ;
-	-moz-background-size: auto 30px ;
-	background-size: auto 30px ;
-	text-indent:-9999px;
-	}
-}
-
 .ui-header{
 	margin-top: -2px;
 }

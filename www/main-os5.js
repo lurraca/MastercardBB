@@ -4,9 +4,7 @@ function loadOs5Stuff() {
 	var headerHeight = $('div[data-role="header"]').height();
 	var contentHeight = $(window).height();
 	var contentWidth = $(window).width();
-	$(function() {
-		$('div[data-role="content"]').height(screen.height - (footerHeight + headerHeight));
-		$('div[data-role="content"]').width(contentWidth);
-	});
+	$('div[data-role="content"]').height(screen.height - (footerHeight + headerHeight));
+	//$('div[data-role="content"]').height(70);
+	$('div[data-role="content"]').width(contentWidth);
 };
-
