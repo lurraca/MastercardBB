@@ -51,12 +51,10 @@ function onDeviceReady() {
 		}
 	}
 
-	alert(isBbOs5);
 	//console.log("PhoneGap Loaded!");
 	if (!isBbOs5) {
 		block();
 	} else {
-		alert("got it");
 		loadOs5Stuff();
 	}
 	checkConnection();
@@ -84,13 +82,19 @@ function onResume() {
 }
 
 function checkConnection(){
-	$.ajax({
-		url:"http://mastercard.devmbs.com/get_data_version.json",
-		dataType : 'json',
-		success : function() { checkDatabase(); setOnline(); },
-		error : function() { checkDatabase(); setOffline() },
-		timeout : 5000
-	});
+	var successFn = function() { checkDatabase(); setOnline(); };
+	var errorFn = function() { checkDatabase(); setOffline() };
+	if(!isBbOs5) {
+		$.ajax({
+			url:"http://mastercard.devmbs.com/get_data_version.json",
+			dataType : 'json',
+			success : successFn,
+			error : errorFn,
+			timeout : 5000
+		});
+	} else {
+		bb5Ajax("http://mastercard.devmbs.com/get_data_version.json", successFn, function() {alert("FUCK OFF!")});
+	}
 }
 
 function doFlow(status){
@@ -137,10 +141,12 @@ function doFlow(status){
 
 function checkDatabase(){
 	if (isBbOs5) {
-		alert("doflow os 5");
 		$.unblockUI();
 		actualMode = 5;
-		populateData();
+		if(isNetworkAvailable) 
+			populateData();
+		else
+			doFlow(false);
 		return ;
 	}
 	var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
@@ -195,7 +201,6 @@ $(document).on('pagebeforeshow','#main', function(){
 $(document).on('pagebeforeshow','#card-main', function(){
 	$("html").css({'overflow':'hidden'});
 	if(isBbOs5) {
-		alert("...");
 		loadOs5Stuff();
 	}
 });
@@ -292,9 +297,7 @@ $(document).on('pagebeforeshow','#card-main', function(){
 		}
 
 		var os5LoadData = function() {
-			alert("djooyyy");
 			$.get(server_url + "benefits/active/all.json", function(benefitsStr) {
-				alert("1");
 				console.log("Getting all active businesses");
 				sendlocalytics("getNewData");
 				var bens = eval("(" + benefitsStr + ")");
@@ -309,10 +312,8 @@ $(document).on('pagebeforeshow','#card-main', function(){
 
 
 				$.get(server_url + "categories.json", function(categoriesStr) {
-					alert("2");
 					console.log("Getting all categories");
 					$.get(server_url + "businesses/from_list/"+idsStr.substring(0,idsStr.length-1)+".json", function(businessesStr) {
-						alert("3");
 						MasterCardData.benefits = eval("(" + benefitsStr + ")");
 						MasterCardData.businesses = eval("(" + businessesStr + ")");
 						MasterCardData.categories = eval("(" + categoriesStr + ")");
@@ -321,7 +322,6 @@ $(document).on('pagebeforeshow','#card-main', function(){
 			}, "html");
 		}
 		window.MasterCardData = {};
-		alert(actualMode);
 		switch(actualMode){
 		case 1:
 			getDataVersion();
@@ -336,7 +336,6 @@ $(document).on('pagebeforeshow','#card-main', function(){
 			onDeviceReady();
 			break;
 		case 5:
-			alert("alertoncase");
 			os5LoadData();
 			break;
 		default:

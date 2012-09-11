@@ -57,6 +57,7 @@
   <!-- Cordova API -->
   <access subdomains="true" uri="file:///store/home" />
   <access subdomains="true" uri="file:///SDCard" />
+  <access subdomains="true" uri="http://mastercard.devmbs.com/" />
 
   <!-- Expose access to all URIs, including the file and http protocols -->
   <access subdomains="true" uri="*" />
