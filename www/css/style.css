@@ -55,9 +55,13 @@ font-size: 18px;
 	margin-left:2% !important;
 }
 .bizDtlImg{
+	float: left;
 	width:25%;
 }
 
+.ui-li-desc{
+	white-space: normal;
+}
 
 #bizDtlWrapper{
 	margin-left:5%;
@@ -81,6 +85,10 @@ font-size: 18px;
 
 #benefitdtlwrapper{
 	margin-left:5%;
+}
+
+#platinum-business-dtl .ui-listview{
+	width: 100%;
 }
 
 #main{

@@ -108,7 +108,7 @@
 
             <div data-role="footer" >
                 <div data-role="navbar">
-                    <ul>
+                    <ul>    
                         <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
                         <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
                         
@@ -148,7 +148,7 @@
 
         <div id="platinum-business-dtl" data-role="page">
             <div data-role="header" >
-                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home"data-iconpos="notext"  data-theme="a"></a>
+                    <a href="#main" onclick="switchCSS('jquery.mobile.theme-1.1.1.min.css')" data-icon="home" data-iconpos="notext"  data-theme="a"></a>
 
                 <center><h1 id="logo">My Logo</h1></center>
                 <a href="" data-icon="back" onclick="history.back();" data-iconpos="notext" data-theme="a"></a>
@@ -157,25 +157,18 @@
                 <h2 class="bizDtlTitle"></h2>
                 <img class="bizDtlImg" src="" />
                 <div id="bizDtlInfo">
-                    <span><b>Teléfono: </b></span><span class="bizDtlTel"></span></p>
-                    <span><b>Dirección: </b></span><span class="bizDtlAddr"></span></p>
-                    <span><b>Descripción: </b></span><span class="bizDtlDesc"></span></p>
+                    <span><b>Teléfono: </b></span><span class="bizDtlTel"></span> <br />
+                    <span><b>Dirección: </b></span><span class="bizDtlAddr"></span> <br />
+                    <span><b>Descripción: </b></span><span class="bizDtlDesc"></span> <br />
                 </div>
             </div>
-                <h3>Ofertas actuales</h2>
-                <ul data-role="listview" data-theme="b" class="bizDtlBenefits">
-                </ul>
-            
-
-            <div data-theme="c" data-role="footer" >
-                <div data-role="navbar">
-                    <ul>
-                        <li><a data-theme="c" class="platinum-benefits-link" href="#platinum-benefits">Ofertas</a></li>
-                        <li><a data-theme="c" class="categories-link" href="#categories">Categorias</a></li>
-                        
-                    </ul>
-                </div>
-            </div>
+            <ul data-role="listview" style="float:left;">
+                <li>
+                    <h2>Oferta</h2>
+                    <p style="margin-top:5px;"><strong>Descripcion: </strong> <span class="benDtlDescription"></span></p>
+                    <p style="margin-top:5px;"><strong>Vigencia: </strong><span class="benDtlFrom"></span> - <span class="benDtlTo"></span></p>
+                 </li>
+            </ul>
         </div>
 
         <div id="categories" data-role="page">

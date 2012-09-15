@@ -143,10 +143,10 @@ function checkDatabase(){
 	if (isBbOs5) {
 		$.unblockUI();
 		actualMode = 5;
-		if(isNetworkAvailable) 
+		//if(isNetworkAvailable) 
 			populateData();
-		else
-			doFlow(false);
+		//else
+		//	doFlow(false);
 		return ;
 	}
 	var db = window.openDatabase("mastercard_db", "1.0", "Mastercard Database", 20000);
@@ -379,8 +379,12 @@ $(document).on('pagebeforeshow','#card-main', function(){
 
 		var benefits = _.filter(MasterCardData.benefits, function(ben) {return ben.business_id == bizId});
 		$("#platinum-business-dtl .bizDtlBenefits").empty();
+
 		$.each(benefits, function(i, bnft) {
-			$("#platinum-business-dtl .bizDtlBenefits").append("<li class='benefit-lnk' benefit-id='"+bnft.id+"'><a href='#platinum-benefits-dtl'>"+bnft.name+"</a></li>");
+
+			$("#platinum-business-dtl .benDtlDescription").html(bnft.description);
+			$("#platinum-business-dtl .benDtlFrom").html(bnft.begin_date);
+			$("#platinum-business-dtl .benDtlTo").html(bnft.end_date);
 		});
 
 		if($("#platinum-business-dtl .bizDtlBenefits").hasClass('ui-listview'))
