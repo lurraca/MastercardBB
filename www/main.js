@@ -67,7 +67,12 @@ function onDeviceReady() {
 			if ($.mobile.activePage.attr('id') == 'main') {
 				navigator.app.exitApp();
 			} else {
-				history.back();
+				if (isBbOs5) {
+					$("[data-icon=back]:visible").click();
+					loadOs5Stuff();
+				} else {
+					history.back();
+				}	
 				return false;
 			}
 		});
@@ -398,14 +403,14 @@ $(document).on('pagebeforeshow','#card-main', function(){
 	var loadBusinesses = function(jqList, bizs) {
 		jqList.empty();
 		$.each(bizs, function(i, el) {
-			jqList.append("<li class='business-lnk' business-id='"+el.id+"'><a href='#platinum-business-dtl'>" + el.name + "</a></li>");
+			var benefits = _.filter(MasterCardData.benefits, function(ben){ return ben.business_id == el.id});
+			jqList.append("<li class='business-lnk' business-id='"+el.id+"'><a href='#platinum-business-dtl'><h3>" + el.name +"</h3><p>"+ benefits[0].name +"</p></a></li>");
 		});
 		jqList.listview('refresh');
 		$(".business-lnk").click(function() {
 			loadBusinessDetail($(this).attr("business-id"));
 		});
 	};
-
 	var loadCategories = function(jqList, categories) {
 		jqList.empty();
 		$.each(categories, function(i, ctg) {
@@ -419,6 +424,10 @@ $(document).on('pagebeforeshow','#card-main', function(){
 
 	$(document).delegate("#platinum-businesses", "pageshow",function() {
 		loadBusinesses($("#platinum-businesses-content ul"), _.filter(MasterCardData.businesses, function(bz){return bz.category_id == MasterCardData.currCatId}));
+	});
+
+	$(document).delegate("[data-role=page]", "pageshow", function() {
+		//if (isBbOs5) { loadOs5Stuff(); };
 	});
 
 	$(document).delegate("#categories", "pageshow",function() {

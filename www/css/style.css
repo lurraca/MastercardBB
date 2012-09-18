@@ -43,6 +43,17 @@ font-size: 18px;
 #card-main{
 	overflow: hidden;
 	-webkit-background-size: cover !important;
+	background: url(../images/platinumbg.jpg) no-repeat center center fixed;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+}
+
+#card-main-2{
+	overflow: hidden;
+	-webkit-background-size: cover !important;
+	background: url(../images/platinumbgltl.jpg) no-repeat center center fixed;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
@@ -93,6 +104,7 @@ font-size: 18px;
 
 #main{
 	overflow: hidden;
-	background: url(../images/playa.jpg) no-repeat center center fixed;
+	background: url(../images/introbg.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 }
+

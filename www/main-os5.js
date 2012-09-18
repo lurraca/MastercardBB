@@ -5,8 +5,8 @@ function loadOs5Stuff() {
 	var contentHeight = $(window).height();
 	var contentWidth = $(window).width();
 	$('div[data-role="content"]').height(screen.height - (footerHeight + headerHeight));
-	$('div[data-role="content"]').width(contentWidth);
-};
+	$('div[data-role="content"]').width(screen.width);
+};	
 
 $.get = function(url, callback, dummyVar) {
 	var xmlHttp = new XMLHttpRequest();
