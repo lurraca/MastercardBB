@@ -378,27 +378,51 @@ $(document).on('pagebeforeshow','#card-main', function(){
        	} else {
        		$("#platinum-business-dtl .bizDtlImg").attr("src","images/noinet.jpg");
        }
-		$("#platinum-business-dtl .bizDtlTel").html(biz.phone);
+		$("#platinum-business-dtl .bizDtlTel").html("<a href=tel:"+biz.phone.replace(/[^0-9]/g, '')+">"+biz.phone+"</a>");
 		$("#platinum-business-dtl .bizDtlAddr").html(biz.address);
 		$("#platinum-business-dtl .bizDtlDesc").html(biz.description);
 
 		var benefits = _.filter(MasterCardData.benefits, function(ben) {return ben.business_id == bizId});
-		$("#platinum-business-dtl .bizDtlBenefits").empty();
+		//$("#platinum-business-dtl .bizDtlBenefits").empty();
 
 		$.each(benefits, function(i, bnft) {
-
-			$("#platinum-business-dtl .benDtlDescription").html(bnft.description);
+			$("#platinum-business-dtl .benDtlDescription").html("<b>Descripcion:</b> " +bnft.description);
 			$("#platinum-business-dtl .benDtlFrom").html(bnft.begin_date);
 			$("#platinum-business-dtl .benDtlTo").html(bnft.end_date);
-		});
-
-		if($("#platinum-business-dtl .bizDtlBenefits").hasClass('ui-listview'))
-			$("#platinum-business-dtl .bizDtlBenefits").listview('refresh');
-
-		$(".benefit-lnk").click(function() {
-			loadBenefitDetail($(this).attr("benefit-id"));
+			//console.log(bnft.description + " " + bnft.begin_date + " " + bnft.end_date)
 		});
 	}
+
+
+	// var loadBusinessDetail = function(bizId) {
+	// 	var biz = _.filter(MasterCardData.businesses, function(bz) {return bz.id == bizId})[0];
+	// 	$("#platinum-business-dtl .bizDtlTitle").html(biz.name);
+ //     	if(networkAvailable()){
+ //     		$("#platinum-business-dtl .bizDtlImg").attr("src", server_url + biz.logo_url);
+ //       	} else {
+ //       		$("#platinum-business-dtl .bizDtlImg").attr("src","images/noinet.jpg");
+ //       }
+	// 	$("#platinum-business-dtl .bizDtlTel").html(biz.phone);
+	// 	$("#platinum-business-dtl .bizDtlAddr").html(biz.address);
+	// 	$("#platinum-business-dtl .bizDtlDesc").html(biz.description);
+
+	// 	var benefits = _.filter(MasterCardData.benefits, function(ben) {return ben.business_id == bizId});
+	// 	$("#platinum-business-dtl .bizDtlBenefits").empty();
+
+	// 	$.each(benefits, function(i, bnft) {
+
+	// 		$("#platinum-business-dtl .benDtlDescription").html(bnft.description);
+	// 		$("#platinum-business-dtl .benDtlFrom").html(bnft.begin_date);
+	// 		$("#platinum-business-dtl .benDtlTo").html(bnft.end_date);
+	// 	});
+
+	// 	if($("#platinum-business-dtl .bizDtlBenefits").hasClass('ui-listview'))
+	// 		$("#platinum-business-dtl .bizDtlBenefits").listview('refresh');
+
+	// 	$(".benefit-lnk").click(function() {
+	// 		loadBenefitDetail($(this).attr("benefit-id"));
+	// 	});
+	// }
 
 	var loadBusinesses = function(jqList, bizs) {
 		jqList.empty();
